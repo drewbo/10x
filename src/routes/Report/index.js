@@ -93,6 +93,11 @@ const Report = ({ type }) => {
 
                       <h2 id={item.target}>{item.title}</h2>
 
+                      {item.lede && (<div className="TxLede">
+                        <Mdx>{item.lede}</Mdx>
+                      </div>
+                      )}
+
                       {item.impact && <Mdx>{item.impact}</Mdx>}
 
                       {item.contentHalf && (
@@ -106,7 +111,7 @@ const Report = ({ type }) => {
                         </div>
                       )}
 
-                      {item.chart && (
+                      {item.byTheNumbersList && (
                         <>
                           {item.byTheNumbersList && (
                             <ul>
@@ -117,10 +122,14 @@ const Report = ({ type }) => {
                               ))}
                             </ul>
                           )}
+                        </>
+                      )}
 
-                          <h3>{item.chartHeading}</h3>
+                      {item.chart && (
+                        <>
+                          <h3 id="chartTitle">{item.chartHeading}</h3>
 
-                          <Chart></Chart>
+                          <Chart year={item.chartYear}></Chart>
                         </>
                       )}
 
@@ -151,7 +160,7 @@ const Report = ({ type }) => {
                       )}
 
                       <Mdx>{item.content2}</Mdx>
-                      
+
                       {item.reportTableData && (
                         <div>
                           <ReportTable
